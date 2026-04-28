@@ -1,0 +1,24 @@
+@layer tokens {
+	:root {
+		--s-scrollbar-thumb: light-dark(var(--p-scrollbar-thumb-light), var(--p-scrollbar-thumb-dark));
+		--s-scrollbar-track: var(--p-scrollbar-track);
+		--s-scrollbar-thumb-root: light-dark(
+			var(--p-scrollbar-thumb-root-light),
+			var(--p-scrollbar-thumb-root-dark)
+		);
+		--s-scrollbar-track-root: var(--p-scrollbar-track-root);
+
+		--s-selection-color-bg: light-dark(var(--p-color-black), var(--p-color-white));
+		--s-selection-color-text: light-dark(var(--p-color-white), var(--p-color-black));
+
+		--s-text-color-default: light-dark(
+			var(--p-text-color-default-light),
+			var(--p-text-color-default-dark)
+		);
+		--s-bg-default: light-dark(var(--p-bg-default-light), var(--p-bg-default-dark));
+		--s-bg-accent: light-dark(var(--p-bg-accent-light), var(--p-bg-accent-dark));
+		--s-border-color: light-dark(var(--p-border-color-light), var(--p-border-color-dark));
+
+		--s-max-width: var(--p-max-width);
+	}
+}

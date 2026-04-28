@@ -1,0 +1,22 @@
+---
+import { Font } from 'astro:assets'
+import '~/assets/styles/main.css'
+---
+
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<Font cssVariable="--font-golos-text" preload />
+		<Font cssVariable="--font-merriweather" preload />
+
+		<title>ya-chess-test</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

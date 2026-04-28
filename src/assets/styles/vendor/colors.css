@@ -1,0 +1,26 @@
+@layer tokens {
+	:root {
+		--p-color-white: oklch(1 0 0);
+		--p-color-black: oklch(0 0 0);
+
+		--p-scrollbar-thumb-light: oklch(0.7 0 0);
+		--p-scrollbar-thumb-dark: oklch(0.4 0 0);
+		--p-scrollbar-track: transparent;
+
+		--p-scrollbar-thumb-root-light: oklch(0.75 0 0);
+		--p-scrollbar-thumb-root-dark: oklch(0.35 0 0);
+		--p-scrollbar-track-root: transparent;
+
+		--p-text-color-default-light: oklch(0.359228 0.010478 262.86);
+		--p-text-color-default-dark: oklch(0.722402 0.0111709 262.86);
+
+		--p-bg-default-light: oklab(0.846996 0.000177733 0.0101823 / 0.2);
+		--p-bg-default-dark: oklch(0.1829 0.0083 274.43);
+
+		--p-bg-accent-light: oklch(0.9666 0.0026 106.45);
+		--p-bg-accent-dark: oklch(0.187 0.0063 271.07);
+
+		--p-border-color-light: oklch(0.928 0.006 264.531);
+		--p-border-color-dark: oklab(0.498284 -0.00180649 -0.0144213 / 0.14);
+	}
+}
