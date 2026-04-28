@@ -1,0 +1,17 @@
+---
+const phrases = [
+	'Дело помощи утопающим — дело рук самих утопающих!',
+	'Шахматы двигают вперед не только культуру, но и экономику!',
+	'Лед тронулся, господа присяжные заседатели!',
+]
+
+const separator = '<span class="land-marquee__separator"></span>'
+const line = phrases.map((phrase) => `${phrase} ${separator}`).join(' ')
+---
+
+<section class="land-marquee" aria-hidden="true">
+	<div class="land-marquee__track">
+		<p class="land-marquee__row" set:html={line}></p>
+		<p class="land-marquee__row" set:html={line}></p>
+	</div>
+</section>

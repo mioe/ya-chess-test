@@ -11,6 +11,9 @@
 		--s-selection-color-bg: light-dark(var(--p-color-black), var(--p-color-white));
 		--s-selection-color-text: light-dark(var(--p-color-white), var(--p-color-black));
 
+		--s-color-white: var(--p-color-white);
+		--s-color-black: var(--p-color-black);
+
 		--s-color-primary: var(--p-color-primary-light);
 		--s-color-primary-foreground: var(--p-color-primary-foreground-light);
 		--s-color-secondary: var(--p-color-secondary-light);

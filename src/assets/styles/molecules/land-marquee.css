@@ -1,0 +1,56 @@
+@layer molecules {
+	.land-marquee {
+		overflow: hidden;
+		color: var(--s-color-white);
+		background-color: var(--s-color-accent);
+		font-family: var(--font-merriweather);
+		font-size: 16px;
+		line-height: 1.1;
+		font-weight: 400;
+	}
+
+	.land-marquee__track {
+		display: flex;
+		width: max-content;
+		animation: land-marquee-scroll 90s linear infinite reverse;
+	}
+
+	.land-marquee:hover .land-marquee__track {
+		animation-play-state: paused;
+	}
+
+	.land-marquee__row {
+		flex-shrink: 0;
+		margin: 0;
+		display: flex;
+		align-items: center;
+		white-space: nowrap;
+		text-transform: uppercase;
+		padding-block: 10px;
+	}
+
+	.land-marquee__separator {
+		width: 6px;
+		height: 6px;
+		display: inline-flex;
+		border-radius: 3px;
+		background-color: var(--s-color-white);
+		flex-shrink: 0;
+		margin-inline: 12px;
+	}
+
+	@keyframes land-marquee-scroll {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.land-marquee__track {
+			animation: none;
+		}
+	}
+}
