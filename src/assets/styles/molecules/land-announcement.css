@@ -1,0 +1,52 @@
+@layer molecules {
+	.land-announcement {
+		display: flex;
+		padding-block-start: 48px;
+		background-color: var(--s-color-white);
+	}
+
+	.land-announcement__picture {
+		margin-block: 24px;
+	}
+
+	.land-announcement__text {
+		font-family: var(--font-merriweather);
+		font-size: 28px;
+		font-optical-sizing: 18;
+		font-weight: 400;
+		text-transform: uppercase;
+		line-height: 1.35;
+	}
+
+	.land-announcement__text-accent {
+		font-weight: 700;
+		color: var(--s-color-accent);
+	}
+
+	@media (min-width: 1262px) {
+		.land-announcement {
+			padding-block-start: 80px;
+
+			.wrapper {
+				position: relative;
+				display: flex;
+				min-height: 250px;
+				align-items: center;
+			}
+		}
+
+		.land-announcement__text {
+			max-width: 764px;
+			font-size: 36px;
+		}
+
+		.land-announcement__picture {
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 250px;
+			width: 394px;
+			margin: 0;
+		}
+	}
+}

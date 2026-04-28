@@ -1,0 +1,13 @@
+@layer atoms {
+	.wrapper {
+		width: 100%;
+		max-width: 335px;
+		margin-inline: auto;
+	}
+
+	@media (min-width: 1262px) {
+		.wrapper {
+			max-width: 1222px;
+		}
+	}
+}

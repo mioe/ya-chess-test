@@ -62,4 +62,15 @@
 			animation: none;
 		}
 	}
+
+	@media (min-width: 1262px) {
+		.land-marquee {
+			font-size: 22px;
+		}
+
+		.land-marquee__row {
+			padding-block-start: 19px;
+			padding-block-end: 17px;
+		}
+	}
 }
