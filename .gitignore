@@ -17,7 +17,7 @@ pnpm-debug.log*
 .env.production
 
 # playwright
-.tmp/
+.tmp/__test-snapshots__
 test-results/
 playwright-report/
 

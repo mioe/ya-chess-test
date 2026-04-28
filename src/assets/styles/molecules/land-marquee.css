@@ -1,12 +1,15 @@
 @layer molecules {
 	.land-marquee {
+		--x: 12px;
+
 		overflow: hidden;
 		color: var(--s-color-white);
 		background-color: var(--s-color-accent);
 		font-family: var(--font-merriweather);
+		font-optical-sizing: 18;
+		font-weight: 400;
 		font-size: 16px;
 		line-height: 1.1;
-		font-weight: 400;
 	}
 
 	.land-marquee__track {
@@ -26,7 +29,12 @@
 		align-items: center;
 		white-space: nowrap;
 		text-transform: uppercase;
-		padding-block: 10px;
+		padding-block-start: 11px;
+		padding-block-end: 9px;
+	}
+
+	.land-marquee__phrase {
+		padding-inline-start: var(--x);
 	}
 
 	.land-marquee__separator {
@@ -36,7 +44,8 @@
 		border-radius: 3px;
 		background-color: var(--s-color-white);
 		flex-shrink: 0;
-		margin-inline: 12px;
+		margin-inline-start: var(--x);
+		margin-block-end: 2px; /* поправляем чтобы было визуально посередине текста */
 	}
 
 	@keyframes land-marquee-scroll {

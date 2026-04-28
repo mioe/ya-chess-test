@@ -6,7 +6,7 @@ const phrases = [
 ]
 
 const separator = '<span class="land-marquee__separator"></span>'
-const line = phrases.map((phrase) => `${phrase} ${separator}`).join(' ')
+const line = phrases.map((phrase) => `<span class="land-marquee__phrase">${phrase}</span> ${separator}`).join(' ')
 ---
 
 <section class="land-marquee" aria-hidden="true">
