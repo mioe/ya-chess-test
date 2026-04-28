@@ -11,14 +11,19 @@
 		--s-selection-color-bg: light-dark(var(--p-color-black), var(--p-color-white));
 		--s-selection-color-text: light-dark(var(--p-color-white), var(--p-color-black));
 
-		--s-text-color-default: light-dark(
-			var(--p-text-color-default-light),
-			var(--p-text-color-default-dark)
-		);
-		--s-bg-default: light-dark(var(--p-bg-default-light), var(--p-bg-default-dark));
-		--s-bg-accent: light-dark(var(--p-bg-accent-light), var(--p-bg-accent-dark));
-		--s-border-color: light-dark(var(--p-border-color-light), var(--p-border-color-dark));
+		--s-color-primary: var(--p-color-primary-light);
+		--s-color-primary-foreground: var(--p-color-primary-foreground-light);
+		--s-color-secondary: var(--p-color-secondary-light);
+		--s-color-secondary-foreground: var(--p-color-secondary-foreground-light);
+		--s-color-logo: var(--p-color-logo-light);
+		--s-color-accent: var(--p-color-accent-light);
+		--s-color-blue: var(--p-color-blue-light);
+		--s-color-sand: var(--p-color-sand-light);
 
-		--s-max-width: var(--p-max-width);
+		--s-border-color-default: var(--p-color-secondary-foreground-light);
+		--s-text-color-default: var(--p-color-primary-light);
+		--s-bg-color-default: var(--p-color-sand-light);
+
+		--s-line-height-default: var(--p-line-height-default);
 	}
 }

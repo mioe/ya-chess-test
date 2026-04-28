@@ -1,5 +1,5 @@
 @layer tokens {
 	:root {
-		--p-max-width: 390px;
+		--p-line-height-default: 1.2;
 	}
 }

@@ -1,0 +1,9 @@
+@layer atoms {
+	.btn-outline-blue {
+		border: 1px solid var(--s-color-blue);
+
+		&:not(:disabled) {
+			cursor: pointer;
+		}
+	}
+}

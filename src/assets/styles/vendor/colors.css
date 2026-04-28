@@ -1,7 +1,7 @@
 @layer tokens {
 	:root {
 		--p-color-white: oklch(1 0 0);
-		--p-color-black: oklch(0 0 0);
+		--p-color-black: oklch(0.2393 0 0); /* #1F1F1F */
 
 		--p-scrollbar-thumb-light: oklch(0.7 0 0);
 		--p-scrollbar-thumb-dark: oklch(0.4 0 0);
@@ -11,16 +11,14 @@
 		--p-scrollbar-thumb-root-dark: oklch(0.35 0 0);
 		--p-scrollbar-track-root: transparent;
 
-		--p-text-color-default-light: oklch(0.359228 0.010478 262.86);
-		--p-text-color-default-dark: oklch(0.722402 0.0111709 262.86);
-
-		--p-bg-default-light: oklab(0.846996 0.000177733 0.0101823 / 0.2);
-		--p-bg-default-dark: oklch(0.1829 0.0083 274.43);
-
-		--p-bg-accent-light: oklch(0.9666 0.0026 106.45);
-		--p-bg-accent-dark: oklch(0.187 0.0063 271.07);
-
-		--p-border-color-light: oklch(0.928 0.006 264.531);
-		--p-border-color-dark: oklab(0.498284 -0.00180649 -0.0144213 / 0.14);
+		/* https://oklch.com/#0.3132,0,0,100 */
+		--p-color-primary-light: oklch(0.3132 0 0); /* #313131 */
+		--p-color-primary-foreground-light: oklch(0.3132 0 0 / 70%); /* #313131 op-70 */
+		--p-color-secondary-light: oklch(0.3132 0 0 / 60%); /* #313131 op-60 */
+		--p-color-secondary-foreground-light: oklch(0.8576 0 0); /* #D0D0D0 */
+		--p-color-logo-light: oklch(0.455 0.0062 67.67); /* #595653 */
+		--p-color-accent-light: oklch(0.6496 0.212 30.92); /* #F54932 */
+		--p-color-blue-light: oklch(0.469 0.1292 262); /* #3057A2 */
+		--p-color-sand-light: oklch(0.9066 0.0181 64.92); /* #E9DED4 */
 	}
 }

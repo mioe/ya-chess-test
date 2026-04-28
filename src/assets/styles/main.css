@@ -7,3 +7,7 @@
 @import 'vendor/reboot.css';
 @import 'vendor/root.css';
 @import 'vendor/semantic.css';
+
+@import 'atoms/buttons.css';
+
+@import 'molecules/land-footer.css';

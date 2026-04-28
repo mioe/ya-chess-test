@@ -1,25 +1,26 @@
 @layer reset {
-	html:not(.light, .dark) {
+	/*html:not(.light, .dark) {
 		color-scheme: light dark;
-	}
+	}*/
 
 	html.light {
 		color-scheme: light only;
 	}
 
-	html.dark {
+	/*html.dark {
 		color-scheme: dark only;
-	}
-
-	:root {
-		font-family: var(--font-ia-writer-quattro);
-		color: var(--s-text-color-default);
-		background-color: var(--s-bg-default);
-		border-color: var(--s-border-color);
-	}
+	}*/
 
 	::selection {
 		background-color: var(--s-selection-color-bg);
 		color: var(--s-selection-color-text);
+	}
+
+	:root {
+		font-family: var(--font-golos-text);
+		line-height: var(--s-line-height-default);
+		color: var(--s-text-color-default);
+		background-color: var(--s-bg-color-default);
+		border-color: var(--s-border-color-default);
 	}
 }

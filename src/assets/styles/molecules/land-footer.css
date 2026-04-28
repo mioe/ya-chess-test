@@ -1,0 +1,16 @@
+@layer molecules {
+	.land-footer {
+		display: flex;
+		flex-direction: column;
+		padding-inline: 20px;
+		padding-block-start: 40px;
+		padding-block-end: 60px;
+		color: var(--s-color-secondary);
+		text-wrap: balance;
+
+		p {
+			max-width: 335px;
+			margin-inline: auto;
+		}
+	}
+}
