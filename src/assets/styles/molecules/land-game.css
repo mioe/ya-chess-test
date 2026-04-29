@@ -1,0 +1,90 @@
+@layer molecules {
+	.land-game {
+		display: flex;
+		flex-direction: column;
+		padding-block-start: 48px;
+		background-color: var(--s-color-white);
+	}
+
+	.land-game__picture {
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+		max-width: 374px;
+		height: 420px;
+		margin: auto;
+
+		&:hover {
+			.land-game__picture__player-bg path,
+			.land-game__picture__knight-bg path {
+				fill: var(--s-color-accent);
+			}
+		}
+	}
+
+	.land-game__picture__player-bg path,
+	.land-game__picture__knight-bg path {
+		transition: fill 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+	}
+
+	.land-game__picture__layer {
+		position: absolute;
+	}
+
+	.land-game__picture__hand {
+		top: 267px;
+		left: 156px;
+		width: 201px;
+		height: 207px;
+	}
+
+	.land-game__picture__knight {
+		top: 284px;
+		left: 63px;
+		width: 112px;
+		height: 122px;
+	}
+
+	.land-game__picture__knight-bg {
+		top: 230px;
+		left: 14px;
+		width: 166px;
+		height: 179px;
+	}
+
+	.land-game__picture__player {
+		top: 95px;
+		left: 73px;
+		width: 239px;
+		height: 240px;
+	}
+
+	.land-game__picture__player-bg {
+		top: 12px;
+		left: 0;
+		width: 374px;
+		height: 243px;
+	}
+
+	.land-game__picture__money {
+		top: 48px;
+		left: 268px;
+		width: 85px;
+		height: 172px;
+	}
+
+	.land-game__picture__bg {
+		top: 60px;
+		left: 34px;
+		width: 287px;
+		height: 309px;
+	}
+
+	.land-game__picture__paper-texture {
+		top: 0;
+		left: 0;
+		mix-blend-mode: color-burn;
+		width: 100%;
+		height: 100%;
+	}
+}

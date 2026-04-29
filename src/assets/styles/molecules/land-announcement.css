@@ -1,6 +1,7 @@
 @layer molecules {
 	.land-announcement {
 		display: flex;
+		flex-direction: column;
 		padding-block-start: 48px;
 		background-color: var(--s-color-white);
 	}
