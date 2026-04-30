@@ -23,9 +23,12 @@
 	}
 
 	.land-steps__subtitle {
-		padding-block-start: 12px;
+		position: relative;
+		display: inline-flex;
 		color: var(--s-color-blue);
+		font-family: var(--font-golos-text);
 		font-size: 18px;
+		text-transform: none;
 	}
 
 	.land-steps__viewport {
@@ -52,12 +55,23 @@
 
 	@media (max-width: 1261.98px) {
 		.land-steps__slide {
+			position: relative;
 			display: flex;
 			flex-direction: column;
 			gap: 8px;
 			background-color: var(--s-bg-color-default);
 			padding-block-start: 42px;
 			padding-block-end: 14px;
+
+			&::before {
+				content: '';
+				pointer-events: none;
+				user-select: none;
+				position: absolute;
+				inset: 0;
+				background-image: url('/assets/pictures/landing/steps-texture.webp');
+				mix-blend-mode: color-burn;
+			}
 		}
 
 		.land-steps__slide:has(.land-steps__cell:only-child) .land-steps__cell {
@@ -157,12 +171,13 @@
 
 		.land-steps__title {
 			font-size: 56px;
+			text-wrap: balance;
 		}
 
 		.land-steps__subtitle {
-			padding: 0;
 			max-width: 280px;
 			font-size: 18px;
+			transform: translateY(-20px);
 		}
 
 		.land-steps__viewport {
