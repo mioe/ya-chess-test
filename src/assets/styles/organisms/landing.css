@@ -1,0 +1,6 @@
+@layer organisms {
+	.landing {
+		display: flex;
+		flex-direction: column;
+	}
+}

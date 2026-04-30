@@ -4,13 +4,17 @@ import DefautLayout from '~/astro/layouts/default.astro'
 import LandMarquee from '~/astro/components/land-marquee.astro'
 import LandAnnouncement from '~/astro/components/land-announcement.astro'
 import LandGame from '~/astro/components/land-game/land-game.astro'
+import LandSteps from '~/astro/components/land-steps.astro'
 import LandFooter from '~/astro/components/land-footer.astro'
 ---
 
 <DefautLayout>
-	<LandMarquee class="r-to-l" />
-	<LandAnnouncement />
-	<LandGame />
-	<LandMarquee class="l-to-r" />
-	<LandFooter />
+	<main class="landing">
+		<LandMarquee class="r-to-l" />
+		<LandAnnouncement />
+		<LandGame />
+		<LandSteps />
+		<LandMarquee class="l-to-r" />
+		<LandFooter />
+	</main>
 </DefautLayout>

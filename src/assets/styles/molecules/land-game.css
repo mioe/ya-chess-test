@@ -140,7 +140,7 @@
 		}
 	}
 
-	@media (max-width: 1261.95px) {
+	@media (max-width: 1261.98px) {
 		.land-game__grid__value:not(:last-of-type) {
 			position: relative;
 			&::before {
@@ -159,6 +159,7 @@
 		padding-block-start: 24px;
 		font-size: 18px;
 		color: var(--s-color-blue);
+		padding-block-end: 60px;
 	}
 
 	.land-game__grid__value-decoration {
@@ -242,7 +243,6 @@
 		.land-game__foottext {
 			font-size: 20px;
 			padding-block-start: 48px;
-			padding-block-end: 60px;
 		}
 	}
 }

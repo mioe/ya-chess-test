@@ -1,0 +1,204 @@
+@layer molecules {
+	.land-steps {
+		--gap: 16px;
+
+		padding-block: 48px;
+		background-color: var(--s-color-white);
+
+		.wrapper {
+			flex-direction: column;
+		}
+	}
+
+	.land-steps__header {
+		margin-block-end: 24px;
+	}
+
+	.land-steps__title {
+		font-family: var(--font-merriweather);
+		font-size: 36px;
+		font-weight: 400;
+		line-height: 1.1;
+		text-transform: uppercase;
+	}
+
+	.land-steps__subtitle {
+		padding-block-start: 12px;
+		color: var(--s-color-blue);
+		font-size: 18px;
+	}
+
+	.land-steps__viewport {
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+	}
+
+	.land-steps__viewport::-webkit-scrollbar {
+		display: none;
+	}
+
+	.land-steps__track {
+		display: flex;
+		gap: var(--gap);
+	}
+
+	.land-steps__slide {
+		flex: 0 0 100%;
+		scroll-snap-align: start;
+		scroll-snap-stop: always;
+	}
+
+	@media (max-width: 1261.98px) {
+		.land-steps__slide {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			background-color: var(--s-bg-color-default);
+			padding-block-start: 42px;
+			padding-block-end: 14px;
+		}
+
+		.land-steps__slide:has(.land-steps__cell:only-child) .land-steps__cell {
+			grid-row: 1 / -1;
+		}
+	}
+
+	.land-steps__cell {
+		display: flex;
+		align-items: flex-start;
+		padding: 20px;
+		gap: var(--gap);
+	}
+
+	.land-steps__num {
+		--s: 32px;
+
+		flex-shrink: 0;
+		width: var(--s);
+		height: var(--s);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		background-color: var(--s-color-white);
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 1;
+	}
+
+	.land-steps__value {
+		font-size: 18px;
+		font-weight: 500;
+	}
+
+	.land-steps__controls {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding-block-start: 20px;
+	}
+
+	.land-steps__btn {
+		width: 36px;
+		height: 36px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid var(--s-border-color-default);
+		border-radius: 50%;
+		background-color: transparent;
+		color: var(--s-text-color-default);
+		font-size: 20px;
+		line-height: 1;
+		cursor: pointer;
+		transition: opacity 0.2s ease;
+	}
+
+	.land-steps__btn[disabled] {
+		opacity: 0.3;
+		cursor: not-allowed;
+	}
+
+	.land-steps__dots {
+		display: flex;
+		gap: 8px;
+	}
+
+	.land-steps__dot {
+		width: 8px;
+		height: 8px;
+		padding: 0;
+		border: none;
+		border-radius: 50%;
+		background-color: var(--s-border-color-default);
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+	}
+
+	.land-steps__dot.is-active {
+		background-color: var(--s-text-color-default);
+	}
+
+	@media (min-width: 1262px) {
+		.land-steps {
+			--row-min-height: 112px;
+			--gap: 20px;
+		}
+
+		.land-steps__header {
+			display: flex;
+			align-items: baseline;
+			gap: 32px;
+			margin-block-end: 40px;
+		}
+
+		.land-steps__title {
+			font-size: 56px;
+		}
+
+		.land-steps__subtitle {
+			padding: 0;
+			max-width: 280px;
+			font-size: 18px;
+		}
+
+		.land-steps__viewport {
+			overflow: visible;
+			scroll-snap-type: none;
+		}
+
+		.land-steps__track {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-auto-flow: row dense;
+			grid-auto-rows: minmax(var(--row-min-height), max-content);
+		}
+
+		.land-steps__value {
+			font-size: 20px;
+		}
+
+		.land-steps__slide {
+			display: contents;
+		}
+
+		.land-steps__cell {
+			background-color: var(--s-bg-color-default);
+		}
+
+		.land-steps__cell--tall {
+			grid-row: span 2;
+		}
+
+		.land-steps__cell--wide {
+			grid-column: span 2;
+		}
+
+		.land-steps__controls {
+			display: none;
+		}
+	}
+}

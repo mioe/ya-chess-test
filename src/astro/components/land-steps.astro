@@ -1,0 +1,121 @@
+<section class="land-steps">
+	<div class="wrapper">
+		<header class="land-steps__header">
+			<h2 class="land-steps__title">
+				Этапы преображения Васюков
+			</h2>
+			<p class="land-steps__subtitle">
+				Будущие источники обогащения васюкинцев
+			</p>
+		</header>
+
+		<div class="land-steps__carousel" data-steps>
+			<div class="land-steps__viewport" data-steps-viewport>
+				<div class="land-steps__track">
+					<div class="land-steps__slide" data-steps-slide>
+						<div class="land-steps__cell">
+							<span class="land-steps__num">1</span>
+							<span class="land-steps__value">Строительство железнодорожной магистрали Москва-Васюки</span>
+						</div>
+						<div class="land-steps__cell">
+							<span class="land-steps__num">2</span>
+							<span class="land-steps__value">Открытие фешенебельной гостиницы «Проходная пешка» и других небоскрёбов</span>
+						</div>
+					</div>
+					<div class="land-steps__slide" data-steps-slide>
+						<div class="land-steps__cell land-steps__cell--tall">
+							<span class="land-steps__num">3</span>
+							<span class="land-steps__value">Поднятие сельского хозяйства в радиусе на тысячу километров: производство овощей, фруктов, икры, шоколадных конфет</span>
+						</div>
+					</div>
+					<div class="land-steps__slide" data-steps-slide>
+						<div class="land-steps__cell">
+							<span class="land-steps__num">4</span>
+							<span class="land-steps__value">Строительство дворца для турнира</span>
+						</div>
+						<div class="land-steps__cell">
+							<span class="land-steps__num">5</span>
+							<span class="land-steps__value">Размещение гаражей для гостевого автотранспорта</span>
+						</div>
+					</div>
+					<div class="land-steps__slide" data-steps-slide>
+						<div class="land-steps__cell">
+							<span class="land-steps__num">6</span>
+							<span class="land-steps__value">Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов</span>
+						</div>
+					</div>
+					<div class="land-steps__slide" data-steps-slide>
+						<div class="land-steps__cell land-steps__cell--wide">
+							<span class="land-steps__num">7</span>
+							<span class="land-steps__value">Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и дирижаблей во все концы света, включая Лос-Анжелос и Мельбурн</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="land-steps__controls">
+				<button type="button" class="land-steps__btn" data-steps-prev aria-label="Предыдущий слайд">‹</button>
+				<div class="land-steps__dots" data-steps-dots role="tablist"></div>
+				<button type="button" class="land-steps__btn" data-steps-next aria-label="Следующий слайд">›</button>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const roots = document.querySelectorAll<HTMLElement>('[data-steps]')
+
+	roots.forEach((root) => {
+		const viewport = root.querySelector<HTMLElement>('[data-steps-viewport]')
+		const slides = Array.from(root.querySelectorAll<HTMLElement>('[data-steps-slide]'))
+		const dotsRoot = root.querySelector<HTMLElement>('[data-steps-dots]')
+		const prev = root.querySelector<HTMLButtonElement>('[data-steps-prev]')
+		const next = root.querySelector<HTMLButtonElement>('[data-steps-next]')
+
+		if (!viewport || !dotsRoot || slides.length === 0) return
+
+		let current = 0
+
+		const dots = slides.map((_, i) => {
+			const dot = document.createElement('button')
+			dot.type = 'button'
+			dot.className = 'land-steps__dot'
+			dot.setAttribute('role', 'tab')
+			dot.setAttribute('aria-label', `Слайд ${i + 1}`)
+			dot.addEventListener('click', () => goTo(i))
+			dotsRoot.appendChild(dot)
+			return dot
+		})
+
+		const updateUI = () => {
+			dots.forEach((d, i) => d.classList.toggle('is-active', i === current))
+			prev?.toggleAttribute('disabled', current === 0)
+			next?.toggleAttribute('disabled', current === slides.length - 1)
+		}
+
+		const goTo = (index: number) => {
+			const isCarousel = viewport.scrollWidth > viewport.clientWidth + 1
+			if (!isCarousel) return
+			current = Math.max(0, Math.min(index, slides.length - 1))
+			viewport.scrollTo({ left: viewport.clientWidth * current, behavior: 'smooth' })
+			updateUI()
+		}
+
+		prev?.addEventListener('click', () => goTo(current - 1))
+		next?.addEventListener('click', () => goTo(current + 1))
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				const visible = entries.filter((e) => e.isIntersecting)
+				if (visible.length === 0) return
+				const top = visible.reduce((a, b) => (a.intersectionRatio > b.intersectionRatio ? a : b))
+				current = slides.indexOf(top.target as HTMLElement)
+				updateUI()
+			},
+			{ root: viewport, threshold: [0.5, 0.75, 1] },
+		)
+		slides.forEach((slide) => observer.observe(slide))
+
+		updateUI()
+	})
+</script>
