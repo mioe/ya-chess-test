@@ -92,6 +92,11 @@
 		track.insertBefore(cloneLast, slides[0])
 		track.appendChild(cloneFirst)
 
+		const slideIndex = new Map<HTMLElement, number>()
+		slides.forEach((slide, i) => slideIndex.set(slide, i))
+		slideIndex.set(cloneFirst, 0)
+		slideIndex.set(cloneLast, slides.length - 1)
+
 		const dots = slides.map((_, i) => {
 			const dot = document.createElement('button')
 			dot.type = 'button'
@@ -199,8 +204,8 @@
 					const visible = entries.filter((e) => e.isIntersecting)
 					if (visible.length === 0) return
 					const top = visible.reduce((a, b) => (a.intersectionRatio > b.intersectionRatio ? a : b))
-					const newCurrent = slides.indexOf(top.target as HTMLElement)
-					if (newCurrent < 0) return
+					const newCurrent = slideIndex.get(top.target as HTMLElement)
+					if (newCurrent === undefined) return
 					if (pendingTarget !== null) {
 						if (newCurrent === pendingTarget) pendingTarget = null
 						return
@@ -212,7 +217,7 @@
 				},
 				{ root: viewport, threshold: [0.5, 0.75, 1] },
 			)
-			slides.forEach((slide) => observer.observe(slide))
+			slideIndex.forEach((_, el) => observer.observe(el))
 
 			viewport.addEventListener(
 				'pointerdown',
