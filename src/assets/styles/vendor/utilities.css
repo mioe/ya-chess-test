@@ -2,4 +2,12 @@
 	.w-full {
 		width: 100%;
 	}
+
+	.max-w-\[300px\] {
+		max-width: 300px;
+	}
+
+	.max-w-\[446px\] {
+		max-width: 446px;
+	}
 }

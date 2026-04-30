@@ -6,4 +6,17 @@
 			cursor: pointer;
 		}
 	}
+
+	.btn-bubble {
+		--s: 36px;
+
+		width: var(--s);
+		height: var(--s);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		position: cursor;
+		border-radius: 50%;
+	}
 }

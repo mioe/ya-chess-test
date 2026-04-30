@@ -1,12 +1,9 @@
 @layer tokens {
 	:root {
-		--s-scrollbar-thumb: light-dark(var(--p-scrollbar-thumb-light), var(--p-scrollbar-thumb-dark));
-		--s-scrollbar-track: var(--p-scrollbar-track);
-		--s-scrollbar-thumb-root: light-dark(
-			var(--p-scrollbar-thumb-root-light),
-			var(--p-scrollbar-thumb-root-dark)
-		);
-		--s-scrollbar-track-root: var(--p-scrollbar-track-root);
+		--s-scrollbar-thumb: var(--s-color-accent);
+		--s-scrollbar-track: var(--s-color-white);
+		--s-scrollbar-thumb-root: var(--s-color-accent);
+		--s-scrollbar-track-root: var(--s-color-white);
 
 		--s-selection-color-bg: light-dark(var(--p-color-black), var(--p-color-white));
 		--s-selection-color-text: light-dark(var(--p-color-white), var(--p-color-black));

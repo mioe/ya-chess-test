@@ -3,12 +3,7 @@
 		--p-color-white: oklch(1 0 0);
 		--p-color-black: oklch(0.2393 0 0); /* #1F1F1F */
 
-		--p-scrollbar-thumb-light: oklch(0.7 0 0);
-		--p-scrollbar-thumb-dark: oklch(0.4 0 0);
 		--p-scrollbar-track: transparent;
-
-		--p-scrollbar-thumb-root-light: oklch(0.75 0 0);
-		--p-scrollbar-thumb-root-dark: oklch(0.35 0 0);
 		--p-scrollbar-track-root: transparent;
 
 		/* https://oklch.com/#0.3132,0,0,100 */
