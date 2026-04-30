@@ -3,54 +3,54 @@ import LangGamePlayerBg from '~/astro/components/land-game/lang-game--player-bg.
 import LangGameKnightBg from '~/astro/components/land-game/land-game--knight-bg.astro'
 ---
 <section class="land-game">
-	<div class="land-game__picture">
-		<img
-			class="land-game__picture__layer land-game__picture__bg"
-			src="/assets/pictures/landing/game-bg.webp"
-			alt="game-bg"
-			loading="lazy"
-			decoding="async"
-		/>
-		<img
-			class="land-game__picture__layer land-game__picture__money"
-			src="/assets/pictures/landing/game-money.webp"
-			alt="game-money"
-			loading="lazy"
-			decoding="async"
-		/>
-		<LangGamePlayerBg />
-		<img
-			class="land-game__picture__layer land-game__picture__player"
-			src="/assets/pictures/landing/game-player.webp"
-			alt="game-player"
-			loading="lazy"
-			decoding="async"
-		/>
-		<LangGameKnightBg />
-		<img
-			class="land-game__picture__layer land-game__picture__knight"
-			src="/assets/pictures/landing/game-knight.webp"
-			alt="game-knight"
-			loading="lazy"
-			decoding="async"
-		/>
-		<img
-			class="land-game__picture__layer land-game__picture__hand"
-			src="/assets/pictures/landing/game-hand.webp"
-			alt="game-hand"
-			loading="lazy"
-			decoding="async"
-		/>
-		<img
-			class="land-game__picture__layer land-game__picture__paper-texture"
-			src="/assets/pictures/landing/game-texture.webp"
-			alt="game-texture"
-			loading="lazy"
-			decoding="async"
-		/>
-	</div>
-
 	<div class="wrapper">
+		<div class="land-game__picture">
+			<img
+				class="land-game__picture__layer land-game__picture__bg"
+				src="/assets/pictures/landing/game-bg.webp"
+				alt="game-bg"
+				loading="lazy"
+				decoding="async"
+			/>
+			<img
+				class="land-game__picture__layer land-game__picture__money"
+				src="/assets/pictures/landing/game-money.webp"
+				alt="game-money"
+				loading="lazy"
+				decoding="async"
+			/>
+			<LangGamePlayerBg />
+			<img
+				class="land-game__picture__layer land-game__picture__player"
+				src="/assets/pictures/landing/game-player.webp"
+				alt="game-player"
+				loading="lazy"
+				decoding="async"
+			/>
+			<LangGameKnightBg />
+			<img
+				class="land-game__picture__layer land-game__picture__knight"
+				src="/assets/pictures/landing/game-knight.webp"
+				alt="game-knight"
+				loading="lazy"
+				decoding="async"
+			/>
+			<img
+				class="land-game__picture__layer land-game__picture__hand"
+				src="/assets/pictures/landing/game-hand.webp"
+				alt="game-hand"
+				loading="lazy"
+				decoding="async"
+			/>
+			<img
+				class="land-game__picture__layer land-game__picture__paper-texture"
+				src="/assets/pictures/landing/game-texture.webp"
+				alt="game-texture"
+				loading="lazy"
+				decoding="async"
+			/>
+		</div>
+
 		<p class="land-game__text">
 			и Сеанс <span class="land-game__text-accent">одновременной игры в шахматы на 160 досках</span> гроссмейстера О. Бендера
 		</p>
@@ -63,13 +63,15 @@ import LangGameKnightBg from '~/astro/components/land-game/land-game--knight-bg.
 			<div class="land-game__grid__value">22 июня 1927 г. в 18:00</div>
 
 			<div class="land-game__grid__label">Стоимость входных билетов:</div>
-			<div class="land-game__grid__value">20 коп.</div>
+			<div class="land-game__grid__value w-full">20 коп.</div>
 
 			<div class="land-game__grid__label">Плата за игру:</div>
 			<div class="land-game__grid__value">50 коп.</div>
 
 			<div class="land-game__grid__label">Взнос на телеграммы:</div>
-			<div class="land-game__grid__value"><span>100 руб.</span> 21 руб. 16 коп.</div>
+			<div class="land-game__grid__value"><span class="land-game__grid__value-decoration">100 руб.</span> 21 руб. 16 коп.</div>
 		</div>
+
+		<p class="land-game__foottext">По всем вопросам обращаться в администрацию к К. Михельсону</p>
 	</div>
 </section>

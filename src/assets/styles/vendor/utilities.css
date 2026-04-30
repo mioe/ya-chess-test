@@ -1,0 +1,5 @@
+@layer utilities {
+	.w-full {
+		width: 100%;
+	}
+}

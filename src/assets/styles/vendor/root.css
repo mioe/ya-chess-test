@@ -21,6 +21,5 @@
 		line-height: var(--s-line-height-default);
 		color: var(--s-text-color-default);
 		background-color: var(--s-bg-color-default);
-		border-color: var(--s-border-color-default);
 	}
 }

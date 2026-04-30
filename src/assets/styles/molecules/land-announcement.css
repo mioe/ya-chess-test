@@ -7,7 +7,8 @@
 	}
 
 	.land-announcement__picture {
-		margin-block: 24px;
+		margin-block-start: 24px;
+		margin-block-end: 25px;
 	}
 
 	.land-announcement__text {
@@ -30,7 +31,6 @@
 
 			.wrapper {
 				position: relative;
-				display: flex;
 				min-height: 250px;
 				align-items: center;
 			}

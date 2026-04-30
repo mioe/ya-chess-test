@@ -7,6 +7,7 @@
 @import 'vendor/reboot.css';
 @import 'vendor/root.css';
 @import 'vendor/semantic.css';
+@import 'vendor/utilities.css';
 
 @import 'atoms/buttons.css';
 @import 'atoms/wrappers.css';
