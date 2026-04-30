@@ -15,7 +15,14 @@
 	.land-marquee__track {
 		display: flex;
 		width: max-content;
+	}
+
+	.land-marquee.r-to-l .land-marquee__track {
 		animation: land-marquee-scroll 90s linear infinite reverse;
+	}
+
+	.land-marquee.l-to-r .land-marquee__track {
+		animation: land-marquee-scroll 90s linear infinite;
 	}
 
 	.land-marquee:hover .land-marquee__track {

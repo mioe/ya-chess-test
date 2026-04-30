@@ -12,14 +12,16 @@
 	}
 
 	.land-game__picture {
+		--s: 1;
+
 		overflow: hidden;
 		position: absolute;
 		top: 22px;
 		left: 50%;
 		transform: translateX(-50%);
 		width: 100%;
-		max-width: 374px;
-		height: 420px;
+		max-width: calc(374px * var(--s));
+		height: calc(420px * var(--s));
 		margin: auto;
 		background-color: var(--s-color-white);
 
@@ -41,52 +43,52 @@
 	}
 
 	.land-game__picture__hand {
-		top: 267px;
-		left: 156px;
-		width: 201px;
-		height: 207px;
+		top: calc(267px * var(--s));
+		left: calc(156px * var(--s));
+		width: calc(201px * var(--s));
+		height: calc(207px * var(--s));
 	}
 
 	.land-game__picture__knight {
-		top: 284px;
-		left: 63px;
-		width: 112px;
-		height: 122px;
+		top: calc(284px * var(--s));
+		left: calc(63px * var(--s));
+		width: calc(112px * var(--s));
+		height: calc(122px * var(--s));
 	}
 
 	.land-game__picture__knight-bg {
-		top: 230px;
-		left: 14px;
-		width: 166px;
-		height: 179px;
+		top: calc(230px * var(--s));
+		left: calc(14px * var(--s));
+		width: calc(166px * var(--s));
+		height: calc(179px * var(--s));
 	}
 
 	.land-game__picture__player {
-		top: 95px;
-		left: 73px;
-		width: 239px;
-		height: 240px;
+		top: calc(95px * var(--s));
+		left: calc(73px * var(--s));
+		width: calc(239px * var(--s));
+		height: calc(240px * var(--s));
 	}
 
 	.land-game__picture__player-bg {
-		top: 12px;
+		top: calc(12px * var(--s));
 		left: 0;
-		width: 374px;
-		height: 243px;
+		width: calc(374px * var(--s));
+		height: calc(243px * var(--s));
 	}
 
 	.land-game__picture__money {
-		top: 48px;
-		left: 268px;
-		width: 85px;
-		height: 172px;
+		top: calc(48px * var(--s));
+		left: calc(268px * var(--s));
+		width: calc(85px * var(--s));
+		height: calc(172px * var(--s));
 	}
 
 	.land-game__picture__bg {
-		top: 60px;
-		left: 34px;
-		width: 287px;
-		height: 309px;
+		top: calc(60px * var(--s));
+		left: calc(34px * var(--s));
+		width: calc(287px * var(--s));
+		height: calc(309px * var(--s));
 	}
 
 	.land-game__picture__paper-texture {
@@ -182,9 +184,11 @@
 		}
 
 		.land-game__picture {
+			--s: 1.42;
+
 			top: 0;
 			left: 0;
-			transform: translateX(0);
+			transform: translateX(-26px) translateY(-22px);
 		}
 
 		.land-game__grid {
@@ -238,6 +242,7 @@
 		.land-game__foottext {
 			font-size: 20px;
 			padding-block-start: 48px;
+			padding-block-end: 60px;
 		}
 	}
 }
