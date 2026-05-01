@@ -1,0 +1,17 @@
+@layer molecules {
+	.land-hero {
+		position: relative;
+
+		&:before {
+			content: '';
+			pointer-events: none;
+			user-select: none;
+			position: absolute;
+			inset: 0;
+			background-image: url('/assets/pictures/landing/steps-texture.webp');
+			background-position: 50% 50%;
+			background-repeat: repeat;
+			mix-blend-mode: color-burn;
+		}
+	}
+}
