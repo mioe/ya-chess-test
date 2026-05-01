@@ -17,23 +17,6 @@
 		}
 	}
 
-	@media (max-width: 1262.98px) {
-		.land-hero {
-			.btn-outline-primary {
-				padding-block-start: 14px;
-				padding-block-end: 13px;
-				border: none;
-				background-color: color-mix(in oklch, var(--s-color-white), transparent 34%);
-
-				&:not(:disabled) {
-					&:hover {
-						background-color: var(--s-color-primary);
-					}
-				}
-			}
-		}
-	}
-
 	.land-hero__body {
 		width: 100%;
 		max-width: 542px;
@@ -81,6 +64,15 @@
 		position: relative;
 		height: 0;
 		width: 100%;
+		user-select: none;
+		pointer-events: none;
+	}
+
+	.land-hero__city-bg__bg-group,
+	.land-hero__city-bg__main-group,
+	.land-hero__city-bg__chunk-group {
+		left: 50%;
+		transform: translateX(-50%) translateY(23px);
 	}
 
 	.land-hero__city-bg__bg-group {
@@ -102,6 +94,75 @@
 
 	.land-hero__city-bg__pawn {
 		display: none;
+	}
+
+	.land-hero__city-bg__sun {
+		--s: 298px;
+
+		position: absolute;
+		left: 50%;
+		height: var(--s);
+		width: var(--s);
+		/*animation: sun-rotate 270s linear infinite;*/
+	}
+
+	@media (max-width: 1262.98px) {
+		.land-hero {
+			.wrapper {
+				padding-block-end: 291px;
+			}
+
+			.btn-outline-primary {
+				padding-block-start: 14px;
+				padding-block-end: 13px;
+				border: none;
+				background-color: color-mix(in oklch, var(--s-color-white), transparent 34%);
+				backdrop-filter: blur(20px) saturate(160%);
+
+				&:not(:disabled) {
+					&:hover {
+						background-color: var(--s-color-primary);
+					}
+				}
+			}
+		}
+
+		.land-hero__city-bg__bg-group,
+		.land-hero__city-bg__main-group,
+		.land-hero__city-bg__chunk-group {
+			width: 858px;
+		}
+
+		.land-hero__city-bg__main-group {
+			transform: translateX(calc(-50% - 146px)) translateY(7px);
+		}
+
+		.land-hero__city-bg__chunk-group {
+			transform: translateX(calc(-50% - 126px)) translateY(13px);
+		}
+
+		.land-hero__city-bg__sun {
+			bottom: 90px;
+			transform: translateX(calc(-50% - 9px));
+		}
+
+		.land-hero__city-bg__king {
+			position: absolute;
+			bottom: 134px;
+			left: 50%;
+			transform: translateX(calc(-50% - 95px));
+			height: 122px;
+			width: 60px;
+		}
+
+		.land-hero__city-bg__queen {
+			position: absolute;
+			bottom: 183px;
+			left: 50%;
+			transform: translateX(calc(-50% + 72px));
+			height: 114px;
+			width: 73px;
+		}
 	}
 
 	@media (min-width: 1262px) {
@@ -141,8 +202,6 @@
 		.land-hero__city-bg__chunk-group {
 			width: 1604px;
 			height: 464px;
-			left: 50%;
-			transform: translateX(-50%) translateY(23px);
 		}
 
 		.land-hero__city-bg__pawn {
@@ -152,13 +211,8 @@
 		.land-hero__city-bg__sun {
 			--s: 660px;
 
-			position: absolute;
 			bottom: 107px;
-			left: 50%;
 			transform: translateX(calc(-50% + 319px));
-			height: var(--s);
-			width: var(--s);
-			animation: sun-rotate 270s linear infinite;
 		}
 
 		.land-hero__city-bg__king {
