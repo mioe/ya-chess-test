@@ -15,5 +15,7 @@
 		--p-color-accent-light: oklch(0.6496 0.212 30.92); /* #F54932 */
 		--p-color-blue-light: oklch(0.469 0.1292 262); /* #3057A2 */
 		--p-color-sand-light: oklch(0.9066 0.0181 64.92); /* #E9DED4 */
+		--p-color-gray-light: oklch(0.8761 0 0); /* #D6D6D6 */
+		--p-color-yellow-light: oklch(0.8685 0.1478 88.85); /* #FBCE51 */
 	}
 }

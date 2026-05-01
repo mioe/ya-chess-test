@@ -19,6 +19,8 @@
 		--s-color-accent: var(--p-color-accent-light);
 		--s-color-blue: var(--p-color-blue-light);
 		--s-color-sand: var(--p-color-sand-light);
+		--s-color-gray: var(--p-color-gray-light);
+		--s-color-yellow: var(--p-color-yellow-light);
 
 		--s-border-color-default: var(--p-color-secondary-foreground-light);
 		--s-text-color-default: var(--p-color-primary-light);

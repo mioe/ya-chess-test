@@ -1,4 +1,15 @@
 @layer atoms {
+	button {
+		all: unset;
+
+		&:not(:disabled) {
+			&:focus-visible {
+				outline: 2px solid var(--s-color-primary);
+				outline-offset: 2px;
+			}
+		}
+	}
+
 	.btn-outline-blue {
 		border: 1px solid var(--s-color-blue);
 
@@ -16,7 +27,27 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		position: cursor;
 		border-radius: 50%;
+		color: var(--s-color-white);
+
+		&:disabled {
+			cursor: not-allowed;
+			background-color: var(--s-color-gray);
+		}
+
+		&:not(:disabled) {
+			cursor: pointer;
+			background-color: var(--s-color-primary);
+			transition: background-color 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+
+			&:hover {
+				background-color: var(--s-color-yellow);
+			}
+		}
+	}
+
+	.btn-bubble__chevron-icon {
+		width: 12px;
+		height: 20px;
 	}
 }
