@@ -103,7 +103,6 @@
 		left: 50%;
 		height: var(--s);
 		width: var(--s);
-		animation: sun-rotate 270s linear infinite;
 	}
 
 	@media (max-width: 1262.98px) {
@@ -233,15 +232,6 @@
 			transform: translateX(calc(-50% + 452px));
 			height: 266px;
 			width: 146px;
-		}
-	}
-
-	@keyframes sun-rotate {
-		from {
-			rotate: 0deg;
-		}
-		to {
-			rotate: 360deg;
 		}
 	}
 }

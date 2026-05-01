@@ -3,6 +3,10 @@
 	.button {
 		all: unset;
 		box-sizing: border-box;
+		display: inline-flex;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
 
 		&:disabled {
 			cursor: not-allowed;
