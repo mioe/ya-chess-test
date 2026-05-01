@@ -30,6 +30,8 @@ jobs:
           cache: pnpm
 
       - name: install dependencies and build 🔥
+        env:
+          BASE_PATH: /ya-chess-test
         run: |
           pnpm install
           pnpm build

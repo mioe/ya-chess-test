@@ -5,16 +5,16 @@ import { expect, test } from '@playwright/test'
 import pixelmatch from 'pixelmatch'
 import { PNG } from 'pngjs'
 
-const REFERENCE = path.resolve('.tmp/source/w375.png')
-const OUTPUT_DIR = path.resolve('.tmp/__test-snapshots__/playwright/w375')
+const REFERENCE = path.resolve('.tmp/source/w1366.png')
+const OUTPUT_DIR = path.resolve('.tmp/__test-snapshots__/playwright/w1366')
 const MAX_DIFF_RATIO = 0.1
 
-test.describe('Perfect pixel w375', () => {
+test.describe('Perfect pixel w1366', () => {
 	test.use({
-		viewport: { width: 375, height: 4497 },
+		viewport: { width: 1366, height: 3602 },
 	})
 
-	test('Главная страница совпадает с макетом на 375px', async ({ page }, testInfo) => {
+	test('Главная страница совпадает с макетом на 1366px', async ({ page }, testInfo) => {
 		await page.emulateMedia({ reducedMotion: 'reduce' })
 
 		await page.goto('/')
