@@ -212,10 +212,6 @@
 			display: contents;
 		}
 
-		.land-steps__slide--clone {
-			display: none;
-		}
-
 		.land-steps__cell {
 			position: relative;
 			background-color: var(--s-bg-color-default);

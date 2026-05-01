@@ -1,0 +1,26 @@
+---
+import IconLogo from '~/assets/icons/logo.svg'
+import LandHeroCityBg from '~/astro/components/land-hero/land-hero--city-bg.astro'
+---
+
+<section class="land-hero">
+	<div class="wrapper">
+		<div class="land-hero__body">
+			<header class="lang-hero__header">
+				<IconLogo class="lang-hero__logo" />
+				<h1 class="lang-hero__title">
+					<span class="text-left">Превратите уездный город</span>
+					<span class="text-center">в столицу</span>
+					<span class="text-right">земного шара</span>
+				</h1>
+				<p class="lang-hero__subtitle">Оплатите взнос на телеграммы для организации Международного васюкинского турнира по шахматам</p>
+			</header>
+			<div class="lang-hero__actions">
+				<button class="btn-primary">Поддержать шахматную мысль</button>
+				<button class="btn-outline-primary">Подробнее о турнире</button>
+			</div>
+		</div>
+	</div>
+
+	<LandHeroCityBg />
+</section>

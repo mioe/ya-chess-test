@@ -1,6 +1,8 @@
 @layer molecules {
 	.land-hero {
 		position: relative;
+		padding-block-start: 20px;
+		overflow: hidden;
 
 		&:before {
 			content: '';
@@ -13,5 +15,70 @@
 			background-repeat: repeat;
 			mix-blend-mode: color-burn;
 		}
+	}
+
+	@media (max-width: 1262.98px) {
+		.land-hero {
+			.btn-outline-primary {
+				padding-block-start: 14px;
+				padding-block-end: 13px;
+				border: none;
+				background-color: color-mix(in oklch, var(--s-color-white), transparent 34%);
+
+				&:not(:disabled) {
+					&:hover {
+						background-color: var(--s-color-primary);
+					}
+				}
+			}
+		}
+	}
+
+	.land-hero__body {
+		width: 100%;
+		max-width: 542px;
+		position: relative;
+	}
+
+	.lang-hero__header {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.lang-hero__logo {
+		position: relative;
+		max-width: 212px;
+		width: 100%;
+		color: var(--s-color-logo);
+	}
+
+	.lang-hero__title {
+		font-family: var(--font-merriweather);
+		font-weight: 400;
+		font-size: 36px;
+		line-height: 1.1;
+		text-transform: uppercase;
+		display: inline-flex;
+		flex-direction: column;
+		width: 100%;
+		padding-block-start: 19px;
+	}
+
+	.lang-hero__subtitle {
+		font-size: 18px;
+		line-height: 1.3;
+	}
+
+	.lang-hero__actions {
+		padding-block-start: 31px;
+		display: flex;
+		flex-direction: column;
+		gap: 13px;
+	}
+
+	.land-hero__city-bg {
+		position: absolute;
+		bottom: 0;
 	}
 }
