@@ -67,7 +67,6 @@
 </section>
 
 <script>
-	const AUTOPLAY_INTERVAL = 4000
 	const MOBILE_QUERY = '(max-width: 1261.98px)'
 
 	const initSteps = (root: HTMLElement) => {
@@ -78,24 +77,6 @@
 		const next = root.querySelector<HTMLButtonElement>('[data-steps-next]')
 
 		if (!viewport || !dotsRoot || slides.length === 0) return
-
-		const track = slides[0].parentElement
-		if (!track) return
-
-		const cloneLast = slides[slides.length - 1].cloneNode(true) as HTMLElement
-		const cloneFirst = slides[0].cloneNode(true) as HTMLElement
-		;[cloneFirst, cloneLast].forEach((el) => {
-			el.setAttribute('aria-hidden', 'true')
-			el.removeAttribute('data-steps-slide')
-			el.classList.add('land-steps__slide--clone')
-		})
-		track.insertBefore(cloneLast, slides[0])
-		track.appendChild(cloneFirst)
-
-		const slideIndex = new Map<HTMLElement, number>()
-		slides.forEach((slide, i) => slideIndex.set(slide, i))
-		slideIndex.set(cloneFirst, 0)
-		slideIndex.set(cloneLast, slides.length - 1)
 
 		const dots = slides.map((_, i) => {
 			const dot = document.createElement('button')
@@ -112,30 +93,16 @@
 
 		const updateUI = () => {
 			dots.forEach((d, i) => d.classList.toggle('is-active', i === current))
-		}
-
-		const slideWidth = () => viewport.clientWidth
-		const physicalScroll = (logicalIndex: number) => slideWidth() * (logicalIndex + 1)
-
-		const ensureRealPosition = () => {
-			const sw = slideWidth()
-			const total = slides.length
-			if (viewport.scrollLeft < 1) {
-				viewport.scrollTo({ left: physicalScroll(total - 1), behavior: 'auto' })
-			} else if (viewport.scrollLeft > sw * (total + 1) - 1) {
-				viewport.scrollTo({ left: physicalScroll(0), behavior: 'auto' })
-			}
+			prev?.toggleAttribute('disabled', current === 0)
+			next?.toggleAttribute('disabled', current === slides.length - 1)
 		}
 
 		const goTo = (target: number, behavior: ScrollBehavior = 'smooth') => {
-			ensureRealPosition()
-			current = ((target % slides.length) + slides.length) % slides.length
+			const next = Math.max(0, Math.min(target, slides.length - 1))
+			if (next === current && pendingTarget === null) return
+			current = next
 			pendingTarget = current
-			let scrollPos: number
-			if (target === slides.length) scrollPos = physicalScroll(slides.length)
-			else if (target === -1) scrollPos = physicalScroll(-1)
-			else scrollPos = physicalScroll(current)
-			viewport.scrollTo({ left: scrollPos, behavior })
+			viewport.scrollTo({ left: viewport.clientWidth * current, behavior })
 			updateUI()
 		}
 
@@ -150,53 +117,15 @@
 
 			if (!mq.matches) return
 
-			viewport.scrollTo({ left: physicalScroll(current), behavior: 'auto' })
+			viewport.scrollTo({ left: viewport.clientWidth * current, behavior: 'auto' })
 
 			const ac = new AbortController()
 			const { signal } = ac
 
-			let intervalId = 0
-			const tick = () => goTo(current + 1, 'smooth')
-			const restartTimer = () => {
-				clearInterval(intervalId)
-				intervalId = window.setInterval(tick, AUTOPLAY_INTERVAL)
-			}
-
-			let scrollDebounce = 0
-			viewport.addEventListener(
-				'scroll',
-				() => {
-					clearTimeout(scrollDebounce)
-					scrollDebounce = window.setTimeout(ensureRealPosition, 100)
-				},
-				{ signal },
-			)
-
-			prev?.addEventListener(
-				'click',
-				() => {
-					goTo(current - 1)
-					restartTimer()
-				},
-				{ signal },
-			)
-			next?.addEventListener(
-				'click',
-				() => {
-					goTo(current + 1)
-					restartTimer()
-				},
-				{ signal },
-			)
+			prev?.addEventListener('click', () => goTo(current - 1), { signal })
+			next?.addEventListener('click', () => goTo(current + 1), { signal })
 			dots.forEach((dot, i) => {
-				dot.addEventListener(
-					'click',
-					() => {
-						goTo(i)
-						restartTimer()
-					},
-					{ signal },
-				)
+				dot.addEventListener('click', () => goTo(i), { signal })
 			})
 
 			const observer = new IntersectionObserver(
@@ -204,8 +133,8 @@
 					const visible = entries.filter((e) => e.isIntersecting)
 					if (visible.length === 0) return
 					const top = visible.reduce((a, b) => (a.intersectionRatio > b.intersectionRatio ? a : b))
-					const newCurrent = slideIndex.get(top.target as HTMLElement)
-					if (newCurrent === undefined) return
+					const newCurrent = slides.indexOf(top.target as HTMLElement)
+					if (newCurrent < 0) return
 					if (pendingTarget !== null) {
 						if (newCurrent === pendingTarget) pendingTarget = null
 						return
@@ -213,36 +142,24 @@
 					if (newCurrent === current) return
 					current = newCurrent
 					updateUI()
-					restartTimer()
 				},
 				{ root: viewport, threshold: [0.5, 0.75, 1] },
 			)
-			slideIndex.forEach((_, el) => observer.observe(el))
+			slides.forEach((slide) => observer.observe(slide))
 
-			viewport.addEventListener(
-				'pointerdown',
-				() => {
-					pendingTarget = null
-					restartTimer()
-				},
-				{ signal },
-			)
+			viewport.addEventListener('pointerdown', () => { pendingTarget = null }, { signal })
 
 			window.addEventListener(
 				'resize',
 				() => {
-					viewport.scrollTo({ left: physicalScroll(current), behavior: 'auto' })
+					viewport.scrollTo({ left: viewport.clientWidth * current, behavior: 'auto' })
 				},
 				{ signal },
 			)
 
-			intervalId = window.setInterval(tick, AUTOPLAY_INTERVAL)
-
 			teardown = () => {
 				ac.abort()
 				observer.disconnect()
-				clearInterval(intervalId)
-				clearTimeout(scrollDebounce)
 			}
 		}
 
