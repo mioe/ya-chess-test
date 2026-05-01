@@ -3,6 +3,7 @@ import { defineConfig, envField, fontProviders } from 'astro/config'
 // https://astro.build/config
 export default defineConfig({
 	output: 'static',
+	base: process.env.NODE_ENV === 'production' ? '/ya-chess-test' : undefined,
 	server: {
 		port: 4321,
 	},
