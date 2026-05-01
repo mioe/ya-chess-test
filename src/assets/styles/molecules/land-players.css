@@ -2,17 +2,21 @@
 	.land-players {
 		--gap: 16px;
 
-		padding-block: 48px;
+		position: relative;
+		padding-block-start: 48px;
+		padding-block-end: 101px;
 		background-color: var(--s-color-white);
 		overflow: hidden;
 
 		.wrapper {
+			position: relative;
 			flex-direction: column;
 		}
 	}
 
 	.land-players__header {
-		margin-block-end: 24px;
+		padding-block-start: 73px;
+		padding-block-end: 40px;
 	}
 
 	.land-players__title {
@@ -28,6 +32,7 @@
 		overscroll-behavior-x: contain;
 		scroll-snap-type: x mandatory;
 		scrollbar-width: none;
+		padding-block-end: 39px;
 	}
 
 	.land-players__viewport::-webkit-scrollbar {
@@ -52,52 +57,72 @@
 		text-align: center;
 	}
 
+	.land-players__card-preview {
+		--s: 244px;
+
+		width: var(--s);
+		height: var(--s);
+		border-radius: 50%;
+		background-image: url('/assets/pictures/landing/player-bg.webp');
+		background-position: 50% 50%;
+		position: relative;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-block-end: 13px;
+	}
+
 	.land-players__photo {
 		width: 100%;
-		max-width: 240px;
-		aspect-ratio: 1 / 1;
+		max-width: 223px;
 		object-fit: cover;
-		border-radius: 50%;
-		background-color: var(--s-bg-color-default);
+		margin-block-start: 16px;
 	}
 
 	.land-players__name {
 		margin-block-start: 8px;
-		font-size: 16px;
+		font-size: 24px;
 		font-weight: 600;
 	}
 
 	.land-players__role {
-		color: var(--s-color-gray);
-		font-size: 14px;
-	}
-
-	.land-players__btn {
-		margin-block-start: 4px;
-		padding: 6px 16px;
-		border-radius: 999px;
-		color: var(--s-color-blue);
-		font-size: 14px;
+		color: var(--s-color-secondary);
+		font-size: 20px;
+		padding-block-end: 11px;
 	}
 
 	.land-players__controls {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 16px;
-		padding-block-start: 24px;
+		gap: 8px;
 	}
 
 	.land-players__counter {
-		font-size: 14px;
-		font-weight: 600;
+		font-size: 16px;
+		width: 40px;
+		text-align: center;
 	}
 
 	@media (min-width: 1262px) {
 		.land-players {
 			--gap: 24px;
 
-			padding-block: 80px;
+			padding-block-start: 129px;
+
+			.btn-bubble {
+				--s: 44px;
+			}
+
+			.btn-bubble__chevron-icon {
+				width: 14px;
+				height: 22px;
+			}
+		}
+
+		.land-players__card-preview {
+			--s: 320px;
 		}
 
 		.land-players__header {
@@ -105,7 +130,7 @@
 			align-items: center;
 			justify-content: space-between;
 			gap: 24px;
-			margin-block-end: 32px;
+			margin-block-end: 21px;
 		}
 
 		.land-players__title {
@@ -117,20 +142,33 @@
 			scroll-snap-align: none;
 		}
 
-		.land-players__slide:nth-child(3n+1) {
+		.land-players__slide:nth-child(3n + 1) {
 			scroll-snap-align: start;
 		}
 
 		.land-players__photo {
-			max-width: 280px;
+			max-width: 294px;
+			margin-block-start: 20px;
+			margin-inline-start: 2px;
 		}
 
 		.land-players__name {
-			font-size: 18px;
+			font-size: 24px;
+			margin-block-start: 7px;
 		}
 
 		.land-players__role {
-			font-size: 16px;
+			font-size: 20px;
+			padding-block-end: 9px;
+		}
+
+		.land-players__controls {
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 1;
+			gap: 12px;
+			transform: translateY(80px);
 		}
 	}
 }

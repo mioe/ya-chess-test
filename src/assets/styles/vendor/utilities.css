@@ -26,4 +26,8 @@
 	.i-svg\:chevron-left {
 		--icon: url('data:image/svg+xml,%3Csvg viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M8.92307 17L2 10.0769L8.92308 3.15385" stroke="currentColor" stroke-width="1.63636" stroke-linecap="square"/%3E%3C/svg%3E%0A');
 	}
+
+	.text-color-secondary {
+		color: var(--s-color-secondary);
+	}
 }

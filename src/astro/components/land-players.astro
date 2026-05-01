@@ -21,16 +21,18 @@ const players = [
 					{players.map((p) => (
 						<article class="land-players__slide" data-players-slide>
 							<div class="land-players__card">
-								<img
-									src="/assets/pictures/landing/game-player.webp"
-									alt={p.name}
-									class="land-players__photo"
-									loading="lazy"
-									decoding="async"
-								/>
+								<div class="land-players__card-preview">
+									<img
+										src="/assets/pictures/landing/player.webp"
+										alt={p.name}
+										class="land-players__photo"
+										loading="lazy"
+										decoding="async"
+									/>
+								</div>
 								<h3 class="land-players__name">{p.name}</h3>
 								<p class="land-players__role">{p.role}</p>
-								<button type="button" class="btn-outline-blue land-players__btn">Подробнее</button>
+								<a href="#" tabindex="0" class="button btn-outline-blue">Подробнее</a>
 							</div>
 						</article>
 					))}
@@ -42,7 +44,7 @@ const players = [
 					<div class="i-svg:chevron-left btn-bubble__chevron-icon"></div>
 				</button>
 				<p class="land-players__counter">
-					<span data-players-current>1</span> / <span data-players-total>{players.length}</span>
+					<span data-players-current>1</span><span class="text-color-secondary"> / <span data-players-total>{players.length}</span></span>
 				</p>
 				<button type="button" class="btn-bubble" data-players-next aria-label="Следующий участник">
 					<div class="i-svg:chevron-right btn-bubble__chevron-icon"></div>

@@ -1,8 +1,15 @@
 @layer atoms {
-	button {
+	button,
+	.button {
 		all: unset;
 
+		&:disabled {
+			cursor: not-allowed;
+		}
+
 		&:not(:disabled) {
+			cursor: pointer;
+
 			&:focus-visible {
 				outline: 2px solid var(--s-color-primary);
 				outline-offset: 2px;
@@ -12,9 +19,22 @@
 
 	.btn-outline-blue {
 		border: 1px solid var(--s-color-blue);
+		font-size: 16px;
+		line-height: 1;
+		color: var(--s-color-blue);
+		padding-inline: 12px;
+		padding-block: 9px;
+		border-radius: 999px;
 
 		&:not(:disabled) {
-			cursor: pointer;
+			transition:
+				background-color 0.2s var(--s-default-transition),
+				color 0.2s var(--s-default-transition);
+
+			&:hover {
+				background-color: var(--s-color-blue);
+				color: var(--s-color-white);
+			}
 		}
 	}
 
@@ -38,7 +58,7 @@
 		&:not(:disabled) {
 			cursor: pointer;
 			background-color: var(--s-color-primary);
-			transition: background-color 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+			transition: background-color 0.2s var(--s-default-transition);
 
 			&:hover {
 				background-color: var(--s-color-yellow);

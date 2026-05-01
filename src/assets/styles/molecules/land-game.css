@@ -35,7 +35,7 @@
 
 	.land-game__picture__player-bg path,
 	.land-game__picture__knight-bg path {
-		transition: fill 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+		transition: fill 0.2s var(--s-default-transition);
 	}
 
 	.land-game__picture__layer {
