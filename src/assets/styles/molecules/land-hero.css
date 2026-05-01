@@ -103,12 +103,14 @@
 		left: 50%;
 		height: var(--s);
 		width: var(--s);
-		/*animation: sun-rotate 270s linear infinite;*/
+		animation: sun-rotate 270s linear infinite;
 	}
 
 	@media (max-width: 1262.98px) {
 		.land-hero {
 			.wrapper {
+				height: 100vh;
+				max-height: 754px;
 				padding-block-end: 291px;
 			}
 
