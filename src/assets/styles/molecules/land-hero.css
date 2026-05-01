@@ -78,7 +78,114 @@
 	}
 
 	.land-hero__city-bg {
+		position: relative;
+		height: 0;
+		width: 100%;
+	}
+
+	.land-hero__city-bg__bg-group {
 		position: absolute;
 		bottom: 0;
+		z-index: -2;
+	}
+
+	.land-hero__city-bg__main-group {
+		position: absolute;
+		bottom: 0;
+		z-index: -1;
+	}
+
+	.land-hero__city-bg__chunk-group {
+		position: absolute;
+		bottom: 0;
+	}
+
+	.land-hero__city-bg__pawn {
+		display: none;
+	}
+
+	@media (min-width: 1262px) {
+		.land-hero {
+			padding-block-start: 28px;
+
+			.btn-primary,
+			.btn-outline-primary {
+				padding-inline: 50px;
+				flex: 1;
+			}
+		}
+
+		.lang-hero__logo {
+			max-width: 245px;
+		}
+
+		.lang-hero__title {
+			font-size: 60px;
+			padding-block-start: 39px;
+		}
+
+		.lang-hero__subtitle {
+			text-align: center;
+		}
+
+		.lang-hero__actions {
+			flex-direction: row;
+			justify-content: space-between;
+			padding-block-start: 41px;
+			padding-block-end: 132px;
+			gap: 15px;
+		}
+
+		.land-hero__city-bg__bg-group,
+		.land-hero__city-bg__main-group,
+		.land-hero__city-bg__chunk-group {
+			width: 1604px;
+			height: 464px;
+			left: 50%;
+			transform: translateX(-50%) translateY(23px);
+		}
+
+		.land-hero__city-bg__pawn {
+			display: block;
+		}
+
+		.land-hero__city-bg__sun {
+			--s: 660px;
+
+			position: absolute;
+			bottom: 107px;
+			left: 50%;
+			transform: translateX(calc(-50% + 319px));
+			height: var(--s);
+			width: var(--s);
+			animation: sun-rotate 270s linear infinite;
+		}
+
+		.land-hero__city-bg__king {
+			position: absolute;
+			bottom: 187px;
+			left: 50%;
+			transform: translateX(calc(-50% + 113px));
+			height: 266px;
+			width: 130px;
+		}
+
+		.land-hero__city-bg__queen {
+			position: absolute;
+			bottom: 292px;
+			left: 50%;
+			transform: translateX(calc(-50% + 452px));
+			height: 266px;
+			width: 146px;
+		}
+	}
+
+	@keyframes sun-rotate {
+		from {
+			rotate: 0deg;
+		}
+		to {
+			rotate: 360deg;
+		}
 	}
 }
