@@ -1,0 +1,136 @@
+@layer molecules {
+	.land-players {
+		--gap: 16px;
+
+		padding-block: 48px;
+		background-color: var(--s-color-white);
+		overflow: hidden;
+
+		.wrapper {
+			flex-direction: column;
+		}
+	}
+
+	.land-players__header {
+		margin-block-end: 24px;
+	}
+
+	.land-players__title {
+		font-family: var(--font-merriweather);
+		font-size: 36px;
+		font-weight: 400;
+		line-height: 1.1;
+		text-transform: uppercase;
+	}
+
+	.land-players__viewport {
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+	}
+
+	.land-players__viewport::-webkit-scrollbar {
+		display: none;
+	}
+
+	.land-players__track {
+		display: flex;
+		gap: var(--gap);
+	}
+
+	.land-players__slide {
+		flex: 0 0 100%;
+		scroll-snap-align: start;
+	}
+
+	.land-players__card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+		text-align: center;
+	}
+
+	.land-players__photo {
+		width: 100%;
+		max-width: 240px;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+		border-radius: 50%;
+		background-color: var(--s-bg-color-default);
+	}
+
+	.land-players__name {
+		margin-block-start: 8px;
+		font-size: 16px;
+		font-weight: 600;
+	}
+
+	.land-players__role {
+		color: var(--s-color-gray);
+		font-size: 14px;
+	}
+
+	.land-players__btn {
+		margin-block-start: 4px;
+		padding: 6px 16px;
+		border-radius: 999px;
+		color: var(--s-color-blue);
+		font-size: 14px;
+	}
+
+	.land-players__controls {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 16px;
+		padding-block-start: 24px;
+	}
+
+	.land-players__counter {
+		font-size: 14px;
+		font-weight: 600;
+	}
+
+	@media (min-width: 1262px) {
+		.land-players {
+			--gap: 24px;
+
+			padding-block: 80px;
+		}
+
+		.land-players__header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 24px;
+			margin-block-end: 32px;
+		}
+
+		.land-players__title {
+			font-size: 56px;
+		}
+
+		.land-players__slide {
+			flex: 0 0 calc((100% - 2 * var(--gap)) / 3);
+			scroll-snap-align: none;
+		}
+
+		.land-players__slide:nth-child(3n+1) {
+			scroll-snap-align: start;
+		}
+
+		.land-players__photo {
+			max-width: 280px;
+		}
+
+		.land-players__name {
+			font-size: 18px;
+		}
+
+		.land-players__role {
+			font-size: 16px;
+		}
+	}
+}

@@ -1,0 +1,245 @@
+---
+const players = [
+	{ name: 'Хозе-Рауль Капабланка', role: 'Чемпион мира по шахматам' },
+	{ name: 'Эммануил Ласкер', role: 'Чемпион мира по шахматам' },
+	{ name: 'Александр Алехин', role: 'Чемпион мира по шахматам' },
+	{ name: 'Арон Нимцович', role: 'Чемпион мира по шахматам' },
+	{ name: 'Рихард Рети', role: 'Чемпион мира по шахматам' },
+	{ name: 'Остап Бендер', role: 'Гроссмейстер' },
+]
+---
+
+<section class="land-players">
+	<div class="wrapper">
+		<header class="land-players__header">
+			<h2 class="land-players__title">Участники турнира</h2>
+		</header>
+
+		<div class="land-players__carousel" data-players>
+			<div class="land-players__viewport" data-players-viewport>
+				<div class="land-players__track" data-players-track>
+					{players.map((p) => (
+						<article class="land-players__slide" data-players-slide>
+							<div class="land-players__card">
+								<img
+									src="/assets/pictures/landing/game-player.webp"
+									alt={p.name}
+									class="land-players__photo"
+									loading="lazy"
+									decoding="async"
+								/>
+								<h3 class="land-players__name">{p.name}</h3>
+								<p class="land-players__role">{p.role}</p>
+								<button type="button" class="btn-outline-blue land-players__btn">Подробнее</button>
+							</div>
+						</article>
+					))}
+				</div>
+			</div>
+
+			<div class="land-players__controls">
+				<button type="button" class="btn-bubble" data-players-prev aria-label="Предыдущий участник">
+					<div class="i-svg:chevron-left btn-bubble__chevron-icon"></div>
+				</button>
+				<p class="land-players__counter">
+					<span data-players-current>1</span> / <span data-players-total>{players.length}</span>
+				</p>
+				<button type="button" class="btn-bubble" data-players-next aria-label="Следующий участник">
+					<div class="i-svg:chevron-right btn-bubble__chevron-icon"></div>
+				</button>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const AUTOPLAY_INTERVAL = 4000
+	const DESKTOP_QUERY = '(min-width: 1262px)'
+	const DESKTOP_PER_VIEW = 3
+	const MOBILE_PER_VIEW = 1
+	const CLONES_PER_SIDE = DESKTOP_PER_VIEW
+
+	const initPlayers = (root: HTMLElement) => {
+		const viewport = root.querySelector<HTMLElement>('[data-players-viewport]')
+		const track = root.querySelector<HTMLElement>('[data-players-track]')
+		const slides = Array.from(root.querySelectorAll<HTMLElement>('[data-players-slide]'))
+		const prev = root.querySelector<HTMLButtonElement>('[data-players-prev]')
+		const next = root.querySelector<HTMLButtonElement>('[data-players-next]')
+		const currentEl = root.querySelector<HTMLElement>('[data-players-current]')
+
+		if (!viewport || !track || slides.length === 0) return
+
+		const total = slides.length
+		const desktopMq = window.matchMedia(DESKTOP_QUERY)
+		const slidesPerView = () => (desktopMq.matches ? DESKTOP_PER_VIEW : MOBILE_PER_VIEW)
+		const lastBoundary = () => {
+			const spv = slidesPerView()
+			return (Math.ceil(total / spv) - 1) * spv
+		}
+
+		for (let i = 0; i < CLONES_PER_SIDE; i++) {
+			const head = slides[(total - CLONES_PER_SIDE + i + total) % total].cloneNode(true) as HTMLElement
+			const tail = slides[i % total].cloneNode(true) as HTMLElement
+			;[head, tail].forEach((el) => {
+				el.setAttribute('aria-hidden', 'true')
+				el.removeAttribute('data-players-slide')
+				el.classList.add('land-players__slide--clone')
+				const btn = el.querySelector('button')
+				if (btn) btn.setAttribute('tabindex', '-1')
+			})
+			track.insertBefore(head, slides[0])
+			track.appendChild(tail)
+		}
+
+		let current = 0
+		let pendingTarget: number | null = null
+
+		const updateUI = () => {
+			if (currentEl) currentEl.textContent = String(Math.min(current + slidesPerView(), total))
+		}
+
+		const slideStep = () => {
+			const items = track.children
+			if (items.length < 2) return viewport.clientWidth
+			return (items[1] as HTMLElement).offsetLeft - (items[0] as HTMLElement).offsetLeft
+		}
+
+		const physicalScroll = (slideIdx: number) => slideStep() * (slideIdx + CLONES_PER_SIDE)
+
+		const ensureRealPosition = () => {
+			const step = slideStep()
+			if (step <= 0) return
+			const idx = Math.round(viewport.scrollLeft / step) - CLONES_PER_SIDE
+			if (idx < 0) {
+				viewport.scrollTo({ left: viewport.scrollLeft + total * step, behavior: 'auto' })
+			} else if (idx >= total) {
+				viewport.scrollTo({ left: viewport.scrollLeft - total * step, behavior: 'auto' })
+			}
+		}
+
+		const goTo = (target: number, behavior: ScrollBehavior = 'smooth') => {
+			ensureRealPosition()
+			const spv = slidesPerView()
+			let scrollPos: number
+			if (target >= total) {
+				current = 0
+				scrollPos = physicalScroll(total)
+			} else if (target < 0) {
+				current = lastBoundary()
+				scrollPos = physicalScroll(-spv)
+			} else {
+				current = target
+				scrollPos = physicalScroll(target)
+			}
+			pendingTarget = current
+			viewport.scrollTo({ left: scrollPos, behavior })
+			updateUI()
+		}
+
+		const syncCurrent = () => {
+			const step = slideStep()
+			if (step <= 0) return
+			const spv = slidesPerView()
+			const slideIdx = Math.round(viewport.scrollLeft / step) - CLONES_PER_SIDE
+			const wrapped = ((slideIdx % total) + total) % total
+			const aligned = Math.min(Math.floor(wrapped / spv) * spv, lastBoundary())
+			if (pendingTarget !== null) {
+				if (aligned === pendingTarget) pendingTarget = null
+				return
+			}
+			if (aligned === current) return
+			current = aligned
+			updateUI()
+			restartTimer()
+		}
+
+		updateUI()
+		viewport.scrollTo({ left: physicalScroll(0), behavior: 'auto' })
+
+		const ac = new AbortController()
+		const { signal } = ac
+
+		let intervalId = 0
+		const tick = () => goTo(current + slidesPerView(), 'smooth')
+		const restartTimer = () => {
+			clearInterval(intervalId)
+			intervalId = window.setInterval(tick, AUTOPLAY_INTERVAL)
+		}
+
+		let scrollRaf = 0
+		let scrollDebounce = 0
+		viewport.addEventListener(
+			'scroll',
+			() => {
+				if (!scrollRaf) {
+					scrollRaf = requestAnimationFrame(() => {
+						scrollRaf = 0
+						syncCurrent()
+					})
+				}
+				clearTimeout(scrollDebounce)
+				scrollDebounce = window.setTimeout(() => {
+					ensureRealPosition()
+					syncCurrent()
+				}, 80)
+			},
+			{ signal },
+		)
+
+		prev?.addEventListener(
+			'click',
+			() => {
+				goTo(current - slidesPerView())
+				restartTimer()
+			},
+			{ signal },
+		)
+		next?.addEventListener(
+			'click',
+			() => {
+				goTo(current + slidesPerView())
+				restartTimer()
+			},
+			{ signal },
+		)
+
+		viewport.addEventListener(
+			'pointerdown',
+			() => {
+				pendingTarget = null
+				restartTimer()
+			},
+			{ signal },
+		)
+
+		let resizeRaf = 0
+		const resnap = () => {
+			cancelAnimationFrame(resizeRaf)
+			resizeRaf = requestAnimationFrame(() => {
+				const spv = slidesPerView()
+				current = Math.min(Math.floor(current / spv) * spv, lastBoundary())
+				pendingTarget = null
+				viewport.scrollTo({ left: physicalScroll(current), behavior: 'auto' })
+				updateUI()
+				restartTimer()
+			})
+		}
+		window.addEventListener('resize', resnap, { signal })
+		desktopMq.addEventListener('change', resnap)
+
+		intervalId = window.setInterval(tick, AUTOPLAY_INTERVAL)
+
+		const teardown = () => {
+			ac.abort()
+			clearInterval(intervalId)
+			clearTimeout(scrollDebounce)
+			cancelAnimationFrame(resizeRaf)
+			cancelAnimationFrame(scrollRaf)
+			desktopMq.removeEventListener('change', resnap)
+		}
+
+		window.addEventListener('pagehide', teardown, { once: true })
+	}
+
+	document.querySelectorAll<HTMLElement>('[data-players]').forEach(initPlayers)
+</script>
